@@ -2,11 +2,11 @@
 //
 //     Display a "loading..." message
 // Make an AJAX request to get a listing of all the movies
-    // Todo: Write a function to get all movies and display all movies
-            // function to display movies {
-                // fetch(url).then(response.json()).then(movies => { write a function to display movies and put here};
+// Todo: Write a function to get all movies and display all movies
+// function to display movies {
+// fetch(url).then(response.json()).then(movies => { write a function to display movies and put here};
 
-            // }
+// }
 // When the initial AJAX request comes back, remove the "loading..." message and replace it with HTML generated from the json response your code receives
 // Allow users to add new movies
 //
@@ -23,13 +23,26 @@
 // When this button is clicked, your javascript should send a DELETE request
 
 
-var url = 'https://codeup-json-server.glitch.me/movies'
-fetch(url).then( response => {response.json().then(  => {users.forEach( userObj  => {// do something with the username login
-            // console.log(userObj.id[255]);
-            if (userObj.id === 16) {console.log(userObj)}
+var url = 'https://sedate-sharp-euphonium.glitch.me/movies'
+fetch(url).then( response => {
+    response.json().then( movieData => {
+        // movieData.forEach( userObj  => {
+        //     // do something with the username login
+        //     // console.log(userObj.id[255]);
+        //     if(userObj.title) {console.log(userObj.title)}
+        //     if (userObj.id === 16) {console.log(userObj)}
+            movieTitle(movieData)
         });
     });
-});
+// });
 
+function movieTitle(data){
+    data.forEach( element  => {
+    if(element.title) {console.log(element.title)}
+    if (element.id === 16) {console.log(element)}
 
+    // console.log('data.title',data.title);
+
+})
+}
 
