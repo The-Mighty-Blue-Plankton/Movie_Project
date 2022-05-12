@@ -74,6 +74,37 @@ $( document ).ready(function() {
 
 
 });
+$('.btn').on('click', (e)=>{
+    alert('submit butn clicked')
+    e.preventDefault()
+        alert('submit butn clicked')
+    let userVal = $('#titleField').val();
+        console.log(userVal);
+    eForm(userVal);
+    }
+    // eForm($('#formGroupExampleInput').val())
+    // let editTitle = $('#formGroupExampleInput').val()
+)
+
+// fetch(url).then( response => {
+//     response.json().then( editmovieData => {
+//       var eTitle = editmovieData.filter(function(n){
+//           return n & 2 === 0;
+//         })
+//         console.log(eTitle)
+//     });
+// })
+function eForm(input) {
+    console.log(input)
+    fetch(url).then( response => {
+        response.json().then( editmovieData => {
+            var eTitle = editmovieData.filter(function(n){
+                return n & 2 === 0;
+            })
+            console.log(eTitle)
+        });
+    })
+}
 
 
 
