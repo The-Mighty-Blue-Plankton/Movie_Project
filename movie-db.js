@@ -31,18 +31,51 @@ fetch(url).then( response => {
         //     // console.log(userObj.id[255]);
         //     if(userObj.title) {console.log(userObj.title)}
         //     if (userObj.id === 16) {console.log(userObj)}
-            movieTitle(movieData)
+        //     movieTitle(movieData)
+        displayCard(movieData)
         });
     });
 // });
 
-function movieTitle(data){
-    data.forEach( element  => {
-    if(element.title) {console.log(element.title)}
-    if (element.id === 16) {console.log(element)}
 
-    // console.log('data.title',data.title);
 
-})
-}
+// function movieTitle(data){
+//     data.forEach( element  => {
+//     if(element.title) {console.log(element.title)}
+//     if (element.id === 16) {console.log(element)}
+//     // console.log('data.title',data.title);
+// })
+// }
+
+
+function displayCard(data) {
+    data.forEach(function (cardInfo) {
+    // console.log(cardInfo)
+        if (cardInfo.title !== undefined) {
+            $('.card').append(` <div className="col"> <!--this is the card (actual start)-->
+                <div className="card">
+                    <img src="${cardInfo.poster}" className="card-img-top" alt="...">
+                        <div className="card-body">
+                            <h5 className="card-title">${cardInfo.title}</h5>
+                            <p className="card-text">This is a longer card with supporting text below as a natural
+                                lead-in to additional content. This content is a little bit longer.</p>
+                        </div>
+                </div>
+            </div> <!--this is the card (actual end)-->
+          <button className = "edit">Edit Movie</button>
+          <button className = "delete">Delete Movie</button>
+`)
+        }
+    })
+};
+
+// A $( document ).ready() block.
+$( document ).ready(function() {
+
+
+});
+
+
+
+
 

@@ -25,3 +25,9 @@
     right: 0;
     margin: auto;
 }
+
+
+.btn {
+    height: 30px;
+    width: 100%;
+}
