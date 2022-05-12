@@ -15,3 +15,14 @@
 #loading-image {
     z-index: 100;
 }
+
+.popup {
+    margin-top: 200px;
+    margin-left: 40px;
+    border: darkgreen solid 10px;
+}
+
+p {
+    margin: 10px;
+    border: darkblue solid 10px;
+}
