@@ -11,7 +11,7 @@ fetch(url).then( response => {
 $('.delete').on("click",  function (e){
     e.preventDefault();
     alert('delete a movie')
-    let id = document.querySelector('.delete').textContent;
+    let id = $('button>.delete').html();
     console.log('movie start id', id)
 })
 // DELETE A MOVIE END
@@ -27,8 +27,18 @@ $('.btn').on('click', (e)=>{
         eForm(userVal);
     }
 )
+
+$('myAnchor')
 function eForm(input) {
-    console.log(input)
+    input.preventDefault();
+    // let fieldValue =
+
+
+
+    alert('worked')
+    // $(inputfield).val()
+    // input.preventDefault();
+    console.log(input);
 
     // post template adapted from ...
     // https://java.codeup.com/javascript-ii/RESTful-api/
@@ -62,14 +72,14 @@ function displayCards(data) {
         if (cardInfo.title !== undefined) {
             $('.card').append(` 
                 <div id="cards">
-                <div className="card">
+                <div class="card">
                     <img src="${cardInfo.poster}" id="image-top" alt="...">
                         <div>
                             <h5 id="title">${cardInfo.title}</h5>
                             <p id="plot">${cardInfo.plot}</p>
-                               <div ></div>
-                              <button className = "edit">Edit Movie</button>
-                              <button className = "delete">Delete Movie ${cardInfo.id}</button>
+                               <div></div>
+                              <button id = "edit" data-id='${cardInfo.id}'>Edit Movie</button>
+<!--                              <button class = "delete">Delete Movie </button>-->
                         </div>
                 </div>
                 </div>
@@ -84,25 +94,37 @@ function displayCards(data) {
 function editCards(data) {
     data.forEach(function (cardInfo) {
         if (cardInfo.title !== undefined) {
-            $('.editCard').append(` 
+            $('.editCard').append(`
                 <div id="cards">
                 <div className="card">
                     <img src="${cardInfo.poster}" id="image-top" alt="...">
                         <div>
-                            <div class="mb-3">
-                                <label for="titleField" class="form-label">Title</label>
-                                <input type="text" class="form-control" id="titleField" placeholder="${cardInfo.title}">
-                            </div>
-<!--                            <input placeholder="" id="title">${cardInfo.title}</input>-->
-                            <p id="plot"><div><label for="The-plot-thickens" class="form-label">Title</label>
-                                <input type="text" class="form-control" id="The-plot-thickens" placeholder="${cardInfo.plot}"></div></p>
-                               
-                              <button className = "edit">Edit Movie</button>
-                              <button className = "delete">Delete Movie ${cardInfo.id}</button>
+                            <form>
+                                <div class="form-group">
+                                    <div class="mb-3">
+                                        <label for="titleField" class="form-label">Title</label>
+                                        <input type="text" class="form-control" id="titleField" data-id="edit" placeholder="${cardInfo.title}">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <p id="plot"><div><label for="The-plot-thickens" class="form-label">Title</label>
+                                        <input type="text" class="form-control" id="The-plot-thickens" placeholder="${cardInfo.plot}"></div></p>
+<!--                                      <button onclick="return eForm('yep').observe('click', function(event) {Event.stop(event);})" -->
+                                      <button
+                                      type="submit"
+                                      class="btn btn-primary edit">Edit Movie</button>
+<!--     
+                                </div>
+                                =============================================                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                                $(“$titleField).val(dataId)
+                                let dataId = $(this).data(“id”)
+                                ==============================================
+                                
+                            </form>
                         </div>
                 </div>
                 </div>
-            </div> <!--this is the card (actual end)-->
+            </div> this is the card (actual end)-->
 `)
         }
         // console.log(cardInfo)
