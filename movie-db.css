@@ -1,5 +1,5 @@
 * {
-    margin: 0;
+    margin: 0 auto;
     box-sizing: border-box;
 }
 
@@ -38,18 +38,18 @@
 
 #cards {
     border: 2px solid red;
-    max-width: 300px;
+    /*max-width: 300px;*/
     display: flex;
     flex-direction: column;
 }
 .card {
-    width: 39%;
+    /*width: 39%;*/
 
     /*background-color: white;*/
 }
 
 #image-top {
-    width: 100px;
+    /*width: 100px;*/
     height: 100px;
 }
 

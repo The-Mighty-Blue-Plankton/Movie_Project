@@ -1,19 +1,25 @@
 var url = 'https://sedate-sharp-euphonium.glitch.me/movies'
-fetch(url).then( response => {
-    response.json().then( movieData => {
-        displayCards(movieData)
-        editCards(movieData)
+
+// GET ALL MOVIES
+fetch(url)
+    .then( response => response.json())
+    .then( movieData => displayCards(movieData))
+    .then(() => {
+        $('.delete-button').click(() => {
+            handleDelete();
+        })
     });
-});
 
 
-// DELETE A MOVIE START
-$('.delete').on("click",  function (e){
-    e.preventDefault();
-    alert('delete a movie')
-    let id = $('button>.delete').html();
-    console.log('movie start id', id)
-})
+
+//HANDLE DELETE BUTTON
+function handleDelete() {
+
+        alert("delete btn clicked");
+    console.log(this);
+    console.log($(this))
+
+}
 // DELETE A MOVIE END
 
 
@@ -68,22 +74,22 @@ function eForm(input) {
 // FUNCTIONS **********************************************************************************************************
 // ********************************************************************************************************************
 function displayCards(data) {
+    console.log(data);
     data.forEach(function (cardInfo) {
-        if (cardInfo.title !== undefined) {
+    // && cardInfo.plot && cardInfo.poster && cardInfo.id
+        if (cardInfo.title !== undefined ) {
             $('.card').append(` 
-                <div id="cards">
+<!--            <div id="cards">-->
                 <div class="card">
-                    <img src="${cardInfo.poster}" id="image-top" alt="...">
+                    <img src="${cardInfo.poster}"  alt="...">
                         <div>
-                            <h5 id="title">${cardInfo.title}</h5>
-                            <p id="plot">${cardInfo.plot}</p>
-                               <div></div>
-                              <button id = "edit" data-id='${cardInfo.id}'>Edit Movie</button>
-<!--                              <button class = "delete">Delete Movie </button>-->
+                            <h5 id="${cardInfo.title}">${cardInfo.title}</h5>
+                            <p id="${cardInfo.plot}">${cardInfo.plot}</p>
+                              <button id="${cardInfo.id}" data-id='${cardInfo.id}'>Edit Movie</button>
+                              <button class="delete-button">Delete Movie</button>
                         </div>
                 </div>
-                </div>
-            </div> <!--this is the card (actual end)-->
+<!--            </div> &lt;!&ndash;this is the card (actual end)&ndash;&gt;-->
 `)
         }
         // console.log(cardInfo)
@@ -92,6 +98,7 @@ function displayCards(data) {
 };
 
 function editCards(data) {
+    var titleStorage = []
     data.forEach(function (cardInfo) {
         if (cardInfo.title !== undefined) {
             $('.editCard').append(`
@@ -113,6 +120,8 @@ function editCards(data) {
                                       <button
                                       type="submit"
                                       class="btn btn-primary edit">Edit Movie</button>
+                                      
+                 
 <!--     
                                 </div>
                                 =============================================                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -128,6 +137,10 @@ function editCards(data) {
 `)
         }
         // console.log(cardInfo)
-
+        //                     titleStorage += document .querySelector('#titleField')
     })
-};
+}
+// document.querySelector('#edit').addEventListener('click', function (){
+//     const docId = document.querySelector('[id="edit"]').textContent;
+//     console.log(docId)
+// })

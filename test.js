@@ -28,7 +28,7 @@ function displayCards(data) {
                             <h5 id="title">${cardInfo.title}</h5>
                             <p id="plot"></p>
                                <div></div>
-                              <button id="edit" data-id='${cardInfo.id}'>Edit Movie</button>
+                              <button id="edit" data-id='${cardInfo.id}'>Edit Movie ${cardInfo.id}</button>
 <!--                              <button class = "delete">Delete Movie </button>-->
                         </div>
                 </div>
@@ -37,7 +37,7 @@ function displayCards(data) {
 `)
         }
         document.querySelector('#edit').addEventListener('click', function (){
-            const docId = document.querySelector('[id="edit"]').valueOf();
+            const docId = document.querySelector('[id="edit"]').textContent;
             console.log(docId)
         })
 
