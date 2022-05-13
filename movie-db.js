@@ -7,18 +7,13 @@ fetch(url).then( response => {
 
 
 // DELETE A MOVIE START
-
 $('.delete').on("click",  function (e){
     e.preventDefault();
     alert('delete a movie')
     let id = document.querySelector('.delete').textContent;
     console.log('movie start id', id)
 })
-
 // DELETE A MOVIE END
-
-
-
 
 
 // ADD A MOVIE START
@@ -31,7 +26,6 @@ $('.btn').on('click', (e)=>{
         eForm(userVal);
     }
 )
-
 function eForm(input) {
     console.log(input)
 
@@ -40,13 +34,11 @@ function eForm(input) {
             var eTitle = editmovieData.filter(function(n){
                 return n & 2 === 0;
             })
-            // console.log(eTitle)
+            console.log(eTitle)
         });
     })
 }
 // ADD A MOVIE END
-
-
 
 // ********************************************************************************************************************
 // FUNCTIONS **********************************************************************************************************
