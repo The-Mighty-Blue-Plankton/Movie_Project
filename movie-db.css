@@ -1,33 +1,58 @@
+* {
+    margin: 0;
+    box-sizing: border-box;
+}
+
+
+
 /******Loading Spinner******/
-#body-onload{
-    background-color: black;
+/*#body-onload{*/
+/*    background-color: black;*/
+/*}*/
+/*#loader {*/
+/*    border: 12px solid #f3f3f3;*/
+/*    border-radius: 50%;*/
+/*    border-top: 12px solid #444444;*/
+/*    width: 70px;*/
+/*    height: 70px;*/
+/*    animation: spin 1s linear infinite;*/
+/*}*/
+
+/*@keyframes spin {*/
+/*    100% {*/
+/*        transform: rotate(360deg);*/
+/*    }*/
+/*}*/
+
+/*.center {*/
+/*    position: absolute;*/
+/*    top: 0;*/
+/*    bottom: 0;*/
+/*    left: 0;*/
+/*    right: 0;*/
+/*    margin: auto;*/
+/*}*/
+
+#cards {
+    border: 2px solid red;
+    max-width: 200px;
+    display: flex;
+    flex-direction: row;
 }
-#loader {
-    border: 12px solid #f3f3f3;
-    border-radius: 50%;
-    border-top: 12px solid #444444;
-    width: 70px;
-    height: 70px;
-    animation: spin 1s linear infinite;
+.card {
+
+    /*background-color: white;*/
 }
 
-@keyframes spin {
-    100% {
-        transform: rotate(360deg);
-    }
+#image-top {
+    width: 100px;
+    height: 100px;
 }
 
-.center {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    margin: auto;
+#title {
+    font-weight: bold;
 }
 
-
-.btn {
-    height: 30px;
-    width: 100%;
+#plot {
+    color: red;
 }
