@@ -108,4 +108,9 @@ function editCards(data) {
         // console.log(cardInfo)
 
     })
+<<<<<<< HEAD
 };
+=======
+};
+
+>>>>>>> 76a39ddf83220d4f10052aca5842fad72d186035
