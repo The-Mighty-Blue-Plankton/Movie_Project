@@ -1,69 +1,72 @@
-var url = 'https://sedate-sharp-euphonium.glitch.me/movies'
-fetch(url).then( response => {
-    response.json().then( movieData => {
-        displayCards(movieData)
-    });
-});
+// ************************************************************************************
+// DISPLAY MOVIES *********************************************************************
+// ************************************************************************************
+fetch('https://sedate-sharp-euphonium.glitch.me/movies').then( response => response.json())
+    .then(displayMovies);
 
+// ************************************************************************************
+// ADD A MOVIE ************************************************************************
+// ************************************************************************************
 
-// DELETE A MOVIE START
-$('.delete').on("click",  function (e){
-    e.preventDefault();
-    alert('delete a movie')
-    let id = document.querySelector('.delete').textContent;
-    console.log('movie start id', id)
+//EVENT LISTENER TO CALL ADDMOVIE FUNCTION
+document.getElementById("add-movie").addEventListener("click", function (event) {
+addMovie(event)
 })
-// DELETE A MOVIE END
 
-
-// ADD A MOVIE START
-$('.btn').on('click', (e)=>{
-    alert('test')
-        e.preventDefault()
-
-        let userVal = $('#titleField').val();
-        // console.log(userVal);
-        eForm(userVal);
-    }
-)
-function eForm(input) {
-    console.log(input)
-
-    fetch(url).then( response => {
-        response.json().then( editmovieData => {
-            var eTitle = editmovieData.filter(function(n){
-                return n & 2 === 0;
-            })
-            console.log(eTitle)
-        });
-    })
+function addMovie(e){
+    e.preventDefault();
+    var data = {title: document.getElementById('txtTitle').value}
+    fetch('https://sedate-sharp-euphonium.glitch.me/movies', {
+        method: 'POST',
+        headers: {'Content-Type':'application/json'},
+        body: JSON.stringify(data)})
+        .then(response=>response.json())
+        .then(function(){
+            alert('Your movie is now part of our movie list');
+            displayMovies(e);
+        })
 }
-// ADD A MOVIE END
 
-// ********************************************************************************************************************
-// FUNCTIONS **********************************************************************************************************
-// ********************************************************************************************************************
-function displayCards(data) {
-    data.forEach(function (cardInfo) {
-        if (cardInfo.title !== undefined) {
-            $('.card').append(` 
-                <div id="cards">
-                <div className="card">
-                    <img src="${cardInfo.poster}" id="image-top" alt="...">
-                        <div>
-                            <h5 id="title">${cardInfo.title}</h5>
-                            <p id="plot">${cardInfo.plot}</p>
-                               <div ></div>
-                              <button className = "edit">Edit Movie</button>
-                              <button className = "delete">Delete Movie ${cardInfo.id}</button>
-                        </div>
-                </div>
-                </div>
-            </div> <!--this is the card (actual end)-->
-`)
-        }
-        // console.log(cardInfo)
+// ************************************************************************************
+// DELETE A MOVIE *********************************************************************
+// ************************************************************************************
+function deleteToDo(e, id){
+    fetch('https://sedate-sharp-euphonium.glitch.me/movies/'+id, {
+        method: 'DELETE',
+        headers: {'Content-Type':'application/json'}})
+        .then(response=>response.json())
+        .then(function(){
+            alert(`Your has been deleted successfully`);
+            displayMovies(e);
+        })
+}
 
-    })
-};
-
+// ************************************************************************************
+// DISPLAY MOVIES *********************************************************************
+// ************************************************************************************
+function displayMovies(){
+    fetch('https://sedate-sharp-euphonium.glitch.me/movies', {
+        method: 'GET',
+        headers: {'Content-Type':'application/json'}})
+        .then(response=>response.json())
+        .then(function(response){
+            let data = response;
+            let card = document.getElementById('card');
+                card.innerHTML = '';
+            for(var i=0; i<data.length; i++){
+                var createCard = document.createElement('tr');
+                var addTitle = document.createElement('td');
+                addTitle.innerText = data[i].title;
+                var createDeleteButton = document.createElement('td');
+                var useDeleteButton = document.createElement('a');
+                useDeleteButton.href = "#";
+                useDeleteButton.innerText = "delete movie";
+                var id = data[i].id;
+                useDeleteButton.onclick = (function(id){return function(){return deleteToDo(event,id);}}(id))
+                createDeleteButton.appendChild(useDeleteButton);
+                createCard.appendChild(addTitle);
+                createCard.appendChild(createDeleteButton);
+                card.appendChild(createCard);
+            }
+        })
+}

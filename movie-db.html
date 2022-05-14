@@ -6,23 +6,27 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <link rel="stylesheet" href="./movie-db.css">
 
+
 </head>
-<<<<<<< HEAD
-    <body>
-,,,,,,,,,
-<!--    Loading spinner   -->
-=======
 <body>
-
-    Loading spinner
->>>>>>> aaa8234160e3b87a82161af86e7a02fb99359d9c
-<div id="loader" class="center">Loading...</div>
-<div id="background"></div>
-
-<!--    Cards   -->
-<h1>Groovy Cohort Movie Project</h1>
-    <div class="card">
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h1>REFACTORED MOVIE PROJECT</h1>
+            <form class="row">
+                <div class="add-movie">
+                    <input class="form-control" id="txtTitle" name="title" type="text"/>
+                    <button id="add-movie" class="btn btn-primary">add movie</button>
+                </div>
+                <table class="table">
+                    <tbody id="card">
+                    </tbody>
+                </table>
+            </form>
+        </div>
     </div>
+</div>
+
 
 
 
@@ -37,23 +41,21 @@
 
 <script src="jquery-2.2.4.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
-
-
 <script src="movie-db.js"></script>
+
 <!--    Loading Window  -->
 
-<script>
-    document.onreadystatechange = function() {
-        if (document.readyState !== "complete") {
-            document.querySelector("body").style.visibility = "hidden";
-            document.querySelector("#loader").style.visibility = "visible";
-        } else {
-            document.querySelector("#loader").style.display = "none";
-            document.querySelector("body").style.visibility = "visible";
-        }
-    };
+<!--<script>-->
+<!--    document.onreadystatechange = function() {-->
+<!--        if (document.readyState !== "complete") {-->
+<!--            document.querySelector("body").style.visibility = "hidden";-->
+<!--            document.querySelector("#loader").style.visibility = "visible";-->
+<!--        } else {-->
+<!--            document.querySelector("#loader").style.display = "none";-->
+<!--            document.querySelector("body").style.visibility = "visible";-->
+<!--        }-->
+<!--    };-->
 
-</script>
+<!--</script>-->
 </body>
 </html>
