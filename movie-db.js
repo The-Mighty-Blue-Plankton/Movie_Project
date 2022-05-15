@@ -53,7 +53,7 @@ $(document).ready(function (){
     function editMovie(e){
         e.preventDefault();
         var data = {
-            title: document.getElementById('editTitle').value,
+            title: document.getElementById('add-movie').value,
             plot: document.getElementById('edit-movie-plot').value
         }
 //
@@ -64,7 +64,7 @@ $(document).ready(function (){
             .then(response=>response.json())
             .then(function(){
                 alert('Your movie is now updated');
-                displayMovies(e);
+                displayMovies(data);
             })
     }
 
@@ -78,7 +78,7 @@ $(document).ready(function (){
             .then(response=>response.json())
             .then(function(){
                 alert(`Your has been deleted successfully`);
-                displayMovies(e);
+                displayMovies();
             })
     }
 
@@ -116,10 +116,11 @@ $(document).ready(function (){
                     useEditIcon.innerText = "edit movie";
                     useEditIcon.style.color = 'red'
 
-                    var editTitle = data[i].title;
-                    var editPlot = data[i].plot;
-                    console.log('edit title', editTitle, editPlot)
-                    useEditIcon.onclick = (function(editTitle){return function(){return editMovie(Event,editTitle);}}(editTitle))
+                    // var editTitle = data[i].title;
+                    // var editPlot = data[i].plot;
+                    // console.log('edit title', editTitle, editPlot)
+                    useEditIcon.onclick = (function(id){return function(){return editMovie(Event,id);}}(id))
+
 
 
                     // ADD EDIT A TAG
