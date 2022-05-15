@@ -1,7 +1,5 @@
-var $ = document.createElement('$');
-$.src = 'https://code.jquery.com/jquery-3.4.1.min.js';
-$.type = 'text/javascript';
-document.getElementsByTagName('head')[0].appendChild($);
+
+
 
 $(document).ready(function () {
 
@@ -46,14 +44,12 @@ $(document).ready(function () {
 // EDIT A MOVIE ************************************************************************
 // ************************************************************************************
 //     EVENT LISTENER TO CALL EDIT A MOVIE FUNCTION
-    document.getElementById("edit-movie-plot").addEventListener("click", function (event) {
-        editMovie(event)
-    })
+
 
 
 //
-    function editMovie(e, movieId) {
-        e.preventDefault();
+    function editMovie(movieId) {
+        // e.preventDefault();
 
         var data = {
             title: document.getElementById('add-movie').value,
@@ -154,22 +150,33 @@ $(document).ready(function () {
 
     function displayEditMovie(e, movieId) {
         e.preventDefault()
+        // var dataOG = fetch('https://sedate-sharp-euphonium.glitch.me/movies', {
+        //     // method: 'POST',
+        //     headers: {'Content-Type': 'application/json'},
+        //     body: JSON.stringify(movieId)
+        // })
 
-        var data = fetch('https://sedate-sharp-euphonium.glitch.me/movies', {
-            method: 'GET',
-            headers: {'Content-Type': 'application/json'}
-        })
-            .then(response => response.json())
+        // var dataOG = fetch('https://sedate-sharp-euphonium.glitch.me/movies').then(response => response.json()).then(response => response.forEach().filter(n => n.id === movieId));
+        // console.log(dataOG)
 
+
+
+
+
+        // var title = dataOG.title;
+        // var plot = dataOG.plot;
 
         var editMovieForm = ``
-        editMovieForm += `<div className="modal">`;
+        editMovieForm += '<div class="modal">';
         editMovieForm += '<h3>EDIT A MOVIE</h3>';
-        editMovieForm += <input className="form-control" id="editTitle" name="title" type="text" placeholder= "$(data.title)"/>;
-        editMovieForm += '<input id="edit-movie-plot" type="text" className="form-plot" placeholder="Type the plot here"/>';
-        editMovieForm += '<button id="submit-edit-movie" className="btn btn-primary">submit movie</button>';
-        editMovieForm += '</div>';
+        editMovieForm += '<input class="form-control" id="editTitle" name="title" type="text" placeholder= ' + title + ' />';
+        editMovieForm += '<input id="edit-movie-plot" type="text" class="form-plot" placeholder= ' + plot + ' />;'
+        editMovieForm += '<button id= '+ movieId +' class="btn">submit movie</button>';
+        editMovieForm += '</div>'
 
-
+        $('.modal-container-edit-movie').html(editMovieForm);
     }
+    // document.getElementById("edit-movie-plot").addEventListener("click", function (event) {
+    //     editMovie(event)
+    // })
 })
