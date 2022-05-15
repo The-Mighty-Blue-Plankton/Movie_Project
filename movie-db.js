@@ -1,12 +1,15 @@
+// var $ = document.createElement('$');
+// $.src = 'https://code.jquery.com/jquery-3.4.1.min.js';
+// $.type = 'text/javascript';
+// document.getElementsByTagName('head')[0].appendChild($);
+
 $(document).ready(function (){
-
-
-
 
 // ************************************************************************************
 // DISPLAY MOVIES *********************************************************************
 // ************************************************************************************
     fetch('https://sedate-sharp-euphonium.glitch.me/movies').then( response => response.json())
+
         .then(displayMovies);
 
 // ************************************************************************************
@@ -25,6 +28,7 @@ $(document).ready(function (){
             plot: document.getElementById('movie-plot').value
         }
 
+
         fetch('https://sedate-sharp-euphonium.glitch.me/movies', {
             method: 'POST',
             headers: {'Content-Type':'application/json'},
@@ -32,36 +36,39 @@ $(document).ready(function (){
             .then(response=>response.json())
             .then(function(){
                 alert('Your movie is now part of our movie list');
-                displayMovies(e);
+                // displayMovies(e);
             })
+
     }
 // ************************************************************************************
 // EDIT A MOVIE ************************************************************************
 // ************************************************************************************
 //     EVENT LISTENER TO CALL EDIT A MOVIE FUNCTION
-    document.getElementById("add-movie").addEventListener("click", function (event) {
-        addMovie(event)
+    document.getElementById("edit-movie-plot").addEventListener("click", function (event) {
+        editMovie(event)
     })
 
+
+//
     function editMovie(e){
         e.preventDefault();
         var data = {
-            title: document.getElementById('txtTitle').value,
-            plot: document.getElementById('movie-plot').value
+            title: document.getElementById('editTitle').value,
+            plot: document.getElementById('edit-movie-plot').value
         }
-
+//
         fetch('https://sedate-sharp-euphonium.glitch.me/movies', {
             method: 'POST',
             headers: {'Content-Type':'application/json'},
             body: JSON.stringify(data)})
             .then(response=>response.json())
             .then(function(){
-                alert('Your movie is now part of our movie list');
+                alert('Your movie is now updated');
                 displayMovies(e);
             })
     }
 
-************************************************************************************
+// ************************************************************************************
 // DELETE A MOVIE *********************************************************************
 // ************************************************************************************
     function deleteToDo(e, id){
@@ -108,9 +115,13 @@ $(document).ready(function (){
                     useEditIcon.href = "#"
                     useEditIcon.innerText = "edit movie";
                     useEditIcon.style.color = 'red'
+
                     var editTitle = data[i].title;
-                    console.log('edit title', editTitle)
+                    var editPlot = data[i].plot;
+                    console.log('edit title', editTitle, editPlot)
                     useEditIcon.onclick = (function(editTitle){return function(){return editMovie(Event,editTitle);}}(editTitle))
+
+
                     // ADD EDIT A TAG
                     card.appendChild(createCard);
                     createCard.appendChild(addTitle);

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>MOVIE PROJECT</title>
-    <script src = "https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!--    <script src = "https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>-->
 <!--        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>-->
     <link rel="stylesheet" href="./movie-db.css">
 
@@ -17,8 +17,8 @@
             <form class="row">
                 <div class="add-movie">
 <!--                    <button id="modal-button">add movie</button>-->
-
-                    <div class="modal-container">
+                    <form>
+                    <div class="modal-container-add-movie">
                         <div class="modal">
                             <h3>ADD A MOVIE</h3>
                             <input class="form-control" id="txtTitle" name="title" type="text" placeholder="Type the movie name here"/>
@@ -26,8 +26,21 @@
                             <button id="add-movie" class="btn btn-primary">add movie</button>
                         </div>
                     </div>
+                    </form>
+                    <form>
 
-                </div>
+                    <!--                    EDIT MOVIE MODAL-->
+                    <div class="modal-container-edit-movie">
+                        <div class="modal">
+                            <h3>EDIT A MOVIE</h3>
+                            <input class="form-control" id="editTitle" name="title" type="text" placeholder="Type the movie name here"/>
+                            <input id="edit-movie-plot" type="text" class="form-plot" placeholder="Type the plot here"/>
+                            <button id="submit-edit-movie" class="btn btn-primary">submit movie</button>
+                        </div>
+                    </div>
+
+                </form>
+
                 <table class="table">
                     <tbody id="card">
                     <a href="#"></a>
@@ -50,8 +63,8 @@
 
 
 
-<!--<script src="jquery-2.2.4.js"></script>-->
-<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="jquery-2.2.4.js"></script>
+<!--<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>-->
 
 
 <!--    Loading Window-->
