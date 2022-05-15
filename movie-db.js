@@ -107,11 +107,11 @@ $(document).ready(function (){
                     useDeleteButton.onclick = (function(id){return function(){return deleteToDo(Event,id);}}(id))
 
                     // ADD EDIT A TAG
-                    // var createEditIcon = document.createElement('td');
-                    // var useEditIcon = document.createElement('a');
-                    // useEditIcon.href = "#"
-                    // useEditIcon.innerText = "edit movie";
-                    // useEditIcon.style.color = 'red'
+                    var createEditIcon = document.createElement('td');
+                    var useEditIcon = document.createElement('a');
+                    useEditIcon.href = "#"
+                    useEditIcon.innerText = "edit movie";
+                    useEditIcon.style.color = 'red'
                     // ADD EDIT A TAG
                     card.appendChild(createCard);
                     createCard.appendChild(addTitle);
