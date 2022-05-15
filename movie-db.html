@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>MOVIE PROJECT</title>
     <script src = "https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <!--    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>-->
+<!--        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>-->
     <link rel="stylesheet" href="./movie-db.css">
 
 
@@ -16,13 +16,13 @@
             <h1>REFACTORED MOVIE PROJECT</h1>
             <form class="row">
                 <div class="add-movie">
-                    <button id="modal-button">add movie</button>
+<!--                    <button id="modal-button">add movie</button>-->
 
                     <div class="modal-container">
                         <div class="modal">
                             <h3>ADD A MOVIE</h3>
                             <input class="form-control" id="txtTitle" name="title" type="text" placeholder="Type the movie name here"/>
-                            <input type="text" class="form-plot" placeholder="Type the plot here"/>
+                            <input id="movie-plot" type="text" class="form-plot" placeholder="Type the plot here"/>
                             <button id="add-movie" class="btn btn-primary">add movie</button>
 
                         </div>
@@ -54,33 +54,35 @@
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 
 
-<!--    Loading Window  -->
+<!--    Loading Window-->
 
-<!--<script>-->
-<!--    document.onreadystatechange = function() {-->
-<!--        if (document.readyState !== "complete") {-->
-<!--            document.querySelector("body").style.visibility = "hidden";-->
-<!--            document.querySelector("#loader").style.visibility = "visible";-->
-<!--        } else {-->
-<!--            document.querySelector("#loader").style.display = "none";-->
-<!--            document.querySelector("body").style.visibility = "visible";-->
-<!--        }-->
-<!--    };-->
 
-<!--</script>-->
-
-<!--<script>-->
-<!--    var modalButton = document.getElementById('#modal-button');-->
-<!--    var modalContainer = document.querySelector('.modal-container')-->
-
-<!--    modalButton.addEventListener('click', function (){-->
-<!--        modalContainer.classList.add('.modal-active')-->
-<!--    })-->
-<!--</script>-->
-
-<!--<script src="movie-db.js"></script>-->
 <script src="test.js"></script>
+<!--<script src="movie-db.js"></script>-->
 
+<script>
+    // document.onreadystatechange = function() {
+    //     if (document.readyState !== "complete") {
+    //         document.querySelector("body").style.visibility = "hidden";
+    //         document.querySelector("#loader").style.visibility = "visible";
+    //     } else {
+    //         document.querySelector("#loader").style.display = "none";
+    //         document.querySelector("body").style.visibility = "visible";
+    //     }
+    //
+    // }
+    //
+    //
+    //
+    //
+    // })
+    //
+    // var modalButton = document.getElementById('#modal-button');
+    // var modalContainer = document.querySelector('.modal-container')
+    //
+    // modalButton.addEventListener('click', function (){
+    //     modalContainer.classList.add('.modal-active')
+</script>
 
 </body>
 </html>
