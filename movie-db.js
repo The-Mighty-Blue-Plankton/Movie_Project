@@ -95,6 +95,7 @@ function displayCards(data) {
         // console.log(cardInfo)
 
     })
+
 };
 
 function editCards(data) {
@@ -110,7 +111,7 @@ function editCards(data) {
                                 <div class="form-group">
                                     <div class="mb-3">
                                         <label for="titleField" class="form-label">Title</label>
-                                        <input type="text" class="form-control" id="titleField" data-id="edit" placeholder="${cardInfo.title}">
+                                        <input type="text" class="form-control" id="titleField" data-id="editTab" placeholder="${cardInfo.title}">
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -119,7 +120,7 @@ function editCards(data) {
 <!--                                      <button onclick="return eForm('yep').observe('click', function(event) {Event.stop(event);})" -->
                                       <button
                                       type="submit"
-                                      class="btn btn-primary edit">Edit Movie</button>
+                                      class="btn btn-primary" id=editTab">Edit Movie</button>
                                       
                  
 <!--     
@@ -140,7 +141,7 @@ function editCards(data) {
         //                     titleStorage += document .querySelector('#titleField')
     })
 }
-// document.querySelector('#edit').addEventListener('click', function (){
-//     const docId = document.querySelector('[id="edit"]').textContent;
+// document.querySelector('#editTab').addEventListener('click', function (){
+//     document.querySelector('.The-plot-thickens').textContent;
 //     console.log(docId)
 // })
