@@ -1,3 +1,6 @@
+$(document).ready(function (){
+
+
 // ************************************************************************************
 // DISPLAY MOVIES *********************************************************************
 // ************************************************************************************
@@ -53,20 +56,36 @@ function displayMovies(){
             let data = response;
             let card = document.getElementById('card');
                 card.innerHTML = '';
+                console.log(data)
             for(var i=0; i<data.length; i++){
                 var createCard = document.createElement('tr');
                 var addTitle = document.createElement('td');
                 addTitle.innerText = data[i].title;
+                // ADD PLOT START
+                var addPlot = document.createElement('td');
+                addPlot.innerText = data[i].plot;
+                // ADD PLOT END
+                // ADD IMAGE
+
+                // ADD IMAGE
+
                 var createDeleteButton = document.createElement('td');
                 var useDeleteButton = document.createElement('a');
-                useDeleteButton.href = "#";
+                useDeleteButton.href = "#"
                 useDeleteButton.innerText = "delete movie";
                 var id = data[i].id;
-                useDeleteButton.onclick = (function(id){return function(){return deleteToDo(event,id);}}(id))
-                createDeleteButton.appendChild(useDeleteButton);
-                createCard.appendChild(addTitle);
-                createCard.appendChild(createDeleteButton);
+                useDeleteButton.onclick = (function(id){return function(){return deleteToDo(Event,id);}}(id))
                 card.appendChild(createCard);
+                createCard.appendChild(addTitle);
+                createCard.appendChild(addPlot);
+                createCard.appendChild(createDeleteButton);
+                createDeleteButton.appendChild(useDeleteButton);
+
             }
         })
 }
+
+
+
+})
+
