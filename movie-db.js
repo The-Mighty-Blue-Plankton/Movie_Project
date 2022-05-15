@@ -99,7 +99,6 @@ $(document).ready(function (){
 
 
                     var createDeleteButton = document.createElement('td');
-
                     var useDeleteButton = document.createElement('a');
                     useDeleteButton.href = "#"
                     useDeleteButton.innerText = "delete movie";
@@ -118,7 +117,7 @@ $(document).ready(function (){
                     createCard.appendChild(addPlot);
                     createCard.appendChild(createDeleteButton);
                     createDeleteButton.appendChild(useDeleteButton);
-                    // createEditIcon.appendChild(useEditIcon);
+                    createEditIcon.appendChild(useEditIcon);
 
                 }
             })
