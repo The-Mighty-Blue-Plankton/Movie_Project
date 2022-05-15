@@ -38,30 +38,30 @@ $(document).ready(function (){
 // ************************************************************************************
 // EDIT A MOVIE ************************************************************************
 // ************************************************************************************
-    //EVENT LISTENER TO CALL EDIT A MOVIE FUNCTION
-    // document.getElementById("add-movie").addEventListener("click", function (event) {
-    //     addMovie(event)
-    // })
-    //
-    // function editMovie(e){
-    //     e.preventDefault();
-    //     var data = {
-    //         title: document.getElementById('txtTitle').value,
-    //         plot: document.getElementById('movie-plot').value
-    //     }
-    //
-    //     fetch('https://sedate-sharp-euphonium.glitch.me/movies', {
-    //         method: 'POST',
-    //         headers: {'Content-Type':'application/json'},
-    //         body: JSON.stringify(data)})
-    //         .then(response=>response.json())
-    //         .then(function(){
-    //             alert('Your movie is now part of our movie list');
-    //             displayMovies(e);
-    //         })
-    // }
+//     EVENT LISTENER TO CALL EDIT A MOVIE FUNCTION
+    document.getElementById("add-movie").addEventListener("click", function (event) {
+        addMovie(event)
+    })
 
-// ************************************************************************************
+    function editMovie(e){
+        e.preventDefault();
+        var data = {
+            title: document.getElementById('txtTitle').value,
+            plot: document.getElementById('movie-plot').value
+        }
+
+        fetch('https://sedate-sharp-euphonium.glitch.me/movies', {
+            method: 'POST',
+            headers: {'Content-Type':'application/json'},
+            body: JSON.stringify(data)})
+            .then(response=>response.json())
+            .then(function(){
+                alert('Your movie is now part of our movie list');
+                displayMovies(e);
+            })
+    }
+
+************************************************************************************
 // DELETE A MOVIE *********************************************************************
 // ************************************************************************************
     function deleteToDo(e, id){
@@ -96,28 +96,29 @@ $(document).ready(function (){
                     var addPlot = document.createElement('td');
                     addPlot.innerText = data[i].plot;
                     // ADD PLOT END
-
-
                     var createDeleteButton = document.createElement('td');
                     var useDeleteButton = document.createElement('a');
                     useDeleteButton.href = "#"
                     useDeleteButton.innerText = "delete movie";
                     var id = data[i].id;
                     useDeleteButton.onclick = (function(id){return function(){return deleteToDo(Event,id);}}(id))
-
                     // ADD EDIT A TAG
-                    var createEditIcon = document.createElement('td');
+                    var createEditButton = document.createElement('td');
                     var useEditIcon = document.createElement('a');
                     useEditIcon.href = "#"
                     useEditIcon.innerText = "edit movie";
                     useEditIcon.style.color = 'red'
+                    var editTitle = data[i].title;
+                    console.log('edit title', editTitle)
+                    useEditIcon.onclick = (function(editTitle){return function(){return editMovie(Event,editTitle);}}(editTitle))
                     // ADD EDIT A TAG
                     card.appendChild(createCard);
                     createCard.appendChild(addTitle);
                     createCard.appendChild(addPlot);
                     createCard.appendChild(createDeleteButton);
                     createDeleteButton.appendChild(useDeleteButton);
-                    createEditIcon.appendChild(useEditIcon);
+                    createEditButton.appendChild(useEditIcon);
+                    createCard.appendChild(createEditButton)
 
                 }
             })
