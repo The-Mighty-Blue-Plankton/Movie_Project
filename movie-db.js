@@ -1,14 +1,12 @@
-
-
-
 $(document).ready(function () {
+    displayMovies();
 
 // ************************************************************************************
 // DISPLAY MOVIES *********************************************************************
 // ************************************************************************************
-    fetch('https://sedate-sharp-euphonium.glitch.me/movies').then(response => response.json())
-
-        .then(displayMovies);
+//     fetch('https://sedate-sharp-euphonium.glitch.me/movies').then(response => response.json())
+//
+//         .then(displayMovies(data));
 
 // ************************************************************************************
 // ADD A MOVIE ************************************************************************
@@ -35,7 +33,7 @@ $(document).ready(function () {
             .then(response => response.json())
             .then(function () {
                 alert('Your movie is now part of our movie list');
-                // displayMovies(e);
+                displayMovies();
             })
 
     }
@@ -46,27 +44,26 @@ $(document).ready(function () {
 //     EVENT LISTENER TO CALL EDIT A MOVIE FUNCTION
 
 
-
 //
-    function editMovie(movieId) {
-        // e.preventDefault();
-
-        var data = {
-            title: document.getElementById('add-movie').value,
-            plot: document.getElementById('edit-movie-plot').value
-        }
+//     function editMovie(movieId) {
+//         // e.preventDefault();
 //
-        fetch('https://sedate-sharp-euphonium.glitch.me/movies', {
-            method: 'POST',
-            headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify(data)
-        })
-            .then(response => response.json())
-            .then(function () {
-                alert('Your movie is now updated');
-                displayMovies(data);
-            })
-    }
+//         var data = {
+//             title: document.getElementById('add-movie').value,
+//             plot: document.getElementById('edit-movie-plot').value
+//         }
+// //
+//         fetch('https://sedate-sharp-euphonium.glitch.me/movies', {
+//             method: 'POST',
+//             headers: {'Content-Type': 'application/json'},
+//             body: JSON.stringify(data)
+//         })
+//             .then(response => response.json())
+//             .then(function () {
+//                 alert('Your movie is now updated');
+//                 displayMovies();
+//             })
+//     }
 
 // ************************************************************************************
 // DELETE A MOVIE *********************************************************************
@@ -148,8 +145,100 @@ $(document).ready(function () {
 
     }
 
+// =========================================
+
     function displayEditMovie(e, movieId) {
-        e.preventDefault()
+        // e.preventDefault()
+        // STEP 1: PUT ID INTO A VAR
+        // var editMovieId = document.getElementById('id').value
+
+        // console.log('editMovie id',  editMovieId)
+
+// STEP 2: FETCH BASED ON THE ID
+        fetch('https://sedate-sharp-euphonium.glitch.me/movies/' + movieId, {
+            method: 'GET',
+            headers: {'Content-Type': 'application/json'}
+        })
+            .then(response => response.json())
+            .then(function (response) {
+                let data = response
+                if (data.id == movieId) {
+                    var title = data.title;
+                    var plot = data.plot;
+
+                    $('#editTitle').attr('placeholder', title);
+                    $('#edit-movie-plot').attr('placeholder', plot);
+                    // $('#insertButtonId').attr('id', movieId);
+                }
+            })
+    }
+
+    // console.log($('#insertButtonId').attr('id'));
+
+    // STEP 3: SELECT BUTTON BY ID AND DO AN ONCLICK
+
+
+    $(document).on('click', '.editButton', function (e) {
+        e.preventDefault();
+        editMovieUpdate();
+
+    });
+
+    // var submitMovie = document.getElementsByClassName('editButton')
+    // submitMovie.onclick = ((e) =>
+
+    function editMovieUpdate() {
+        var editMovieVals =
+            {
+                title: document.getElementById('add-movie').value,
+                plot: document.getElementById('edit-movie-plot').value
+            }
+        var uri = $('.editButton').attr('id')
+        // STEP 5: DO A PUT WITH USERS UPDATED VALUES
+        fetch('https://sedate-sharp-euphonium.glitch.me/movies/' + uri, {
+            method: 'PUT',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify(editMovieVals)
+        })
+            .then(response => response.json())
+            .then(function () {
+                alert('Your movie is updated');
+            })
+    }
+})
+
+
+
+
+
+
+// // STEP 4: GRAB THE VALUES FROM THE INPUT FIELDS (USER UPDATES VALUES)
+//
+//     var newMovieVals =
+//         {
+//             title: document.getElementById('add-movie').value,
+//             plot: document.getElementById('edit-movie-plot').value
+//         }
+//
+// // STEP 5: DO A PUT WITH USERS UPDATED VALUES
+//     fetch('https://sedate-sharp-euphonium.glitch.me/movies/' + editMovieId, {
+//         method: 'PUT',
+//         headers: {'Content-Type': 'application/json'},
+//         body: JSON.stringify(newMovieVals)
+//     })
+//         .then(response => response.json())
+//         .then(function () {
+//             alert('Your movie is updated');
+//             displayMovies();
+//         })
+
+// =========================================
+
+
+
+
+
+
         // var dataOG = fetch('https://sedate-sharp-euphonium.glitch.me/movies', {
         //     // method: 'POST',
         //     headers: {'Content-Type': 'application/json'},
@@ -166,17 +255,9 @@ $(document).ready(function () {
         // var title = dataOG.title;
         // var plot = dataOG.plot;
 
-        var editMovieForm = ``
-        editMovieForm += '<div class="modal">';
-        editMovieForm += '<h3>EDIT A MOVIE</h3>';
-        editMovieForm += '<input class="form-control" id="editTitle" name="title" type="text" placeholder= ' + title + ' />';
-        editMovieForm += '<input id="edit-movie-plot" type="text" class="form-plot" placeholder= ' + plot + ' />;'
-        editMovieForm += '<button id= '+ movieId +' class="btn">submit movie</button>';
-        editMovieForm += '</div>'
 
-        $('.modal-container-edit-movie').html(editMovieForm);
-    }
+
     // document.getElementById("edit-movie-plot").addEventListener("click", function (event) {
     //     editMovie(event)
     // })
-})
+
